@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -8,39 +9,66 @@ using MP_OnlineStore.DAL.Interfaces.Repositories;
 
 namespace MP_OnlineStore.DAL.Repositories
 {
-    // For Using generic repository it's needed to implement Base entity
-    public class GenericRepository<T> : IRepository<T>
+    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly NorthwindContext _dbContext;
 
-        public GenericRepository(NorthwindContext dbContext)
+        private DbSet<TEntity> _entities { get; }
+
+        public GenericRepository(DbSet<TEntity> entities)
         {
-            _dbContext = dbContext;
+            _entities = entities;
         }
 
-        public Task AddAsync(T category)
+        public virtual void AddAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            _entities.AddAsync(entity);
         }
 
-        public Task DeleteAsync(T category)
+        public virtual IEnumerable<TEntity> Get(
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string includeProperties = "")
         {
-            throw new NotImplementedException();
+            IQueryable<TEntity> query = _entities;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            foreach (var includeProperty in includeProperties.Split
+                (new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            else
+            {
+                return query.ToList();
+            }
         }
 
-        public Task<T> FirstOrDefaultAsync(int id)
+        public virtual ValueTask<TEntity> FirstOrDefaultAsync(int id)
         {
-            throw new NotImplementedException();
+           return _entities.FindAsync(id);
         }
 
-        public async Task<List<T>> ListAllAsync()
+        public virtual IQueryable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return _entities.AsQueryable();
         }
 
-        public Task UpdateAsync(T category)
+        public virtual void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            _entities.Update(entity);
+        }
+        public virtual void Delete(TEntity entity)
+        {
+            _entities.Remove(entity);
         }
     }
 }

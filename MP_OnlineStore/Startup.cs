@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MP_OnlineStore.DAL;
+using MP_OnlineStore.DAL.Interfaces;
 using MP_OnlineStore.DAL.Interfaces.Repositories;
 using MP_OnlineStore.DAL.Repositories;
 
@@ -31,7 +32,7 @@ namespace MP_OnlineStore
             services.AddDbContext<NorthwindContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

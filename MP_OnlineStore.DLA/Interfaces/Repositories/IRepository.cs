@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MP_OnlineStore.DAL.Interfaces.Repositories
 {
-    public interface IRepository<T>
+    public interface IRepository<TEntity> where TEntity : class
     {
-        Task AddAsync(T category);
-        Task<T> FirstOrDefaultAsync(int id);
-        Task<List<T>> ListAllAsync();
-        Task UpdateAsync(T category);
-        Task DeleteAsync(T category);
+        void AddAsync(TEntity entity);
+        ValueTask<TEntity> FirstOrDefaultAsync(int id);
+        IQueryable<TEntity> GetAll();
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
     }
 }

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MP_OnlineStore.DAL.Entities.Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<header>
+    <h1>
+        Categories
+    </h1>
+</header>
+
+@foreach (var item in Model)
+{
+    @*<h2>Magna</h2>*@
+    <div class="">
+        <p>@item.CategoryName</p>
+    </div>
+}
+
