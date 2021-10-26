@@ -13,14 +13,14 @@
 		$body = $('body');
 
 	// Breakpoints.
-		Breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '361px',   '480px'  ],
-			xxsmall:  [ null,      '360px'  ]
-		});
+		//breakpoints({
+		//	xlarge:   [ '1281px',  '1680px' ],
+		//	large:    [ '981px',   '1280px' ],
+		//	medium:   [ '737px',   '980px'  ],
+		//	small:    [ '481px',   '736px'  ],
+		//	xsmall:   [ '361px',   '480px'  ],
+		//	xxsmall:  [ null,      '360px'  ]
+		//});
 
 	// Play initial animations on page load.
 		$window.on('load', function() {
@@ -30,8 +30,8 @@
 		});
 
 	// Touch?
-		if (browser.mobile)
-			$body.addClass('is-touch');
+		//if (browser.mobile)
+		//	$body.addClass('is-touch');
 
 	// Forms.
 		var $form = $('form');
@@ -84,11 +84,11 @@
 					.triggerHandler('--init');
 
 				// Fix.
-					if (browser.name == 'ie'
-					||	browser.mobile)
-						$this
-							.css('max-height', '10em')
-							.css('overflow-y', 'auto');
+					//if (browser.name == 'ie'
+					//||	browser.mobile)
+					//	$this
+					//		.css('max-height', '10em')
+					//		.css('overflow-y', 'auto');
 
 			});
 
@@ -142,30 +142,30 @@
 			})
 			.on('click', 'a', function(event) {
 
-				var href = $(this).attr('href');
+				//var href = $(this).attr('href');
 
-				event.preventDefault();
-				event.stopPropagation();
+				//event.preventDefault();
+				//event.stopPropagation();
 
 				// Hide.
 					$menu._hide();
 
 				// Redirect.
-					if (href == '#menu')
-						return;
+					//if (href == '#menu')
+					//	return;
 
 					window.setTimeout(function() {
 						window.location.href = href;
 					}, 350);
 
 			})
-			.append('<a class="close" href="#menu">Close</a>');
+			.append('<a class="close" id="#menu">Close</a>');
 
 		$body
-			.on('click', 'a[href="#menu"]', function(event) {
+			.on('click', 'a[id="#menu"]', function(event) {
 
-				event.stopPropagation();
-				event.preventDefault();
+				//event.stopPropagation();
+				//event.preventDefault();
 
 				// Toggle.
 					$menu._toggle();

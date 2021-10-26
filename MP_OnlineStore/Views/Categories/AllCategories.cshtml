@@ -10,11 +10,19 @@
     </h1>
 </header>
 
-@foreach (var item in Model)
-{
-    @*<h2>Magna</h2>*@
-    <div class="">
-        <p>@item.CategoryName</p>
-    </div>
-}
-
+<section class="tiles">
+    @foreach (var item in Model)
+    {
+        <article class="style2">
+            <span class="image">
+                <img src="~/images/pic01.jpg" alt="" />
+            </span>
+            <a asp-controller="Products" asp-action="ProductsList" asp-route-categoryId = "@item.CategoryId">
+                <h2>@item.CategoryName</h2>
+                <div class="content">
+                    <p>@item.Description</p>
+                </div>
+            </a>
+        </article>
+    }
+</section>

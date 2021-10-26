@@ -1,0 +1,37 @@
+﻿@model ProductsListViewModel
+
+@{
+    ViewData["Title"] = Model.Category.CategoryName;
+}
+
+<header>
+    <h1>
+        @Model.Category.CategoryName
+    </h1>
+</header>
+
+<div class="table-wrapper">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity Per Unit</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.QuantityPerUnit</td>
+                <td>@item.UnitPrice</td>
+            </tr>
+        }
+
+        </tbody>
+        <tfoot>
+       
+        </tfoot>
+    </table>
+</div>
