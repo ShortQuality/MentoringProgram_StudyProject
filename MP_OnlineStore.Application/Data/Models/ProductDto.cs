@@ -1,6 +1,6 @@
-﻿namespace MP_OnlineStore.WEB.ViewModels
+﻿namespace MP_OnlineStore.Application.Data.Models
 {
-    public class ProductViewModel
+    public class ProductDto
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
@@ -13,6 +13,6 @@
         public short? ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
 
-        public CategoryViewModel Category { get; set; }
+        public CategoryDto Category { get; set; }
     }
 }

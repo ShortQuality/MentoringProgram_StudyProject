@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using MP_OnlineStore.DAL.Entities;
-using MP_OnlineStore.DAL.Interfaces;
-using MP_OnlineStore.DAL.Interfaces.Repositories;
-using MP_OnlineStore.DAL.Repositories;
+using MP_OnlineStore.Core.Entities;
+using MP_OnlineStore.Core.Interfaces;
+using MP_OnlineStore.Core.Interfaces.Repositories;
+using MP_OnlineStore.Infrastructure.Data;
+using MP_OnlineStore.Infrastructure.Repositories;
 
-namespace MP_OnlineStore.DAL
+namespace MP_OnlineStore.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {

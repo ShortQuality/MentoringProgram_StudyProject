@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using MP_OnlineStore.DAL.Interfaces.Repositories;
+using MP_OnlineStore.Core.Interfaces.Repositories;
 
-namespace MP_OnlineStore.DAL.Repositories
+namespace MP_OnlineStore.Infrastructure.Repositories
 {
     public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {

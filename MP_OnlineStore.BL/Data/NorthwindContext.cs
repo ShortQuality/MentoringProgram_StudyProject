@@ -1,8 +1,8 @@
 ﻿#nullable disable
 using Microsoft.EntityFrameworkCore;
-using MP_OnlineStore.DAL.Entities;
+using MP_OnlineStore.Core.Entities;
 
-namespace MP_OnlineStore.DAL
+namespace MP_OnlineStore.Infrastructure.Data
 {
     public class NorthwindContext : DbContext
     {

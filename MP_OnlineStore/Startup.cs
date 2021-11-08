@@ -1,20 +1,17 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using MP_OnlineStore.DAL;
-using MP_OnlineStore.DAL.Interfaces;
-using MP_OnlineStore.DAL.Interfaces.Repositories;
-using MP_OnlineStore.DAL.Repositories;
+using MP_OnlineStore.Application.MappingProfiles;
+using MP_OnlineStore.Core.Interfaces;
+using MP_OnlineStore.Infrastructure;
+using MP_OnlineStore.Infrastructure.Data;
+using MP_OnlineStore.WEB.MappingProfiles;
 
-namespace MP_OnlineStore
+namespace MP_OnlineStore.WEB
 {
     public class Startup
     {
@@ -28,11 +25,20 @@ namespace MP_OnlineStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllersWithViews();
             services.AddDbContext<NorthwindContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            var mapperConfig = new MapperConfiguration(mc => {
+                mc.AddProfile(new DtoMapperProfile());
+                mc.AddProfile( new ViewModelsMapperProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,13 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using MP_OnlineStore.DAL;
-using MP_OnlineStore.DAL.Interfaces;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using MP_OnlineStore.Core.Interfaces;
 
-namespace MP_OnlineStore.Controllers
+namespace MP_OnlineStore.WEB.Controllers
 {
     public class CategoriesController : Controller
     {

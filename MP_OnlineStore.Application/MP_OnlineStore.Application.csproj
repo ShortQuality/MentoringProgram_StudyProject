@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MP_OnlineStore.BL\MP_OnlineStore.Infrastructure.csproj" />
+    <ProjectReference Include="..\MP_OnlineStore.DLA\MP_OnlineStore.Core.csproj" />
+  </ItemGroup>
+
+</Project>

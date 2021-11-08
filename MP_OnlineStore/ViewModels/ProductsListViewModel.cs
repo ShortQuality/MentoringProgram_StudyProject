@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MP_OnlineStore.DAL.Entities;
+﻿using System.Collections.Generic;
+using MP_OnlineStore.Core.Entities;
 
-namespace MP_OnlineStore.ViewModels
+namespace MP_OnlineStore.WEB.ViewModels
 {
     public class ProductsListViewModel
     {
-        public List<Product> Products { get; set; }
-        public Category Category { get; set; }
+        public CategoryViewModel Category { get; set; }
+        public ICollection<ProductViewModel> Products { get; set; }
+        public int MaxProductsOnPage { get; set; }
     }
 }

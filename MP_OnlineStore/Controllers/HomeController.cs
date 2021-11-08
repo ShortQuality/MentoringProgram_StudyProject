@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MP_OnlineStore.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using MP_OnlineStore.WEB.ViewModels;
 
-namespace MP_OnlineStore.Controllers
+namespace MP_OnlineStore.WEB.Controllers
 {
     public class HomeController : Controller
     {

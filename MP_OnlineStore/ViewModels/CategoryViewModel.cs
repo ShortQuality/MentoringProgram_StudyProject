@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace MP_OnlineStore.ViewModels
+namespace MP_OnlineStore.WEB.ViewModels
 {
     public class CategoryViewModel
     {

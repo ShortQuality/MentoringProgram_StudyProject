@@ -1,6 +1,4 @@
-using System;
-
-namespace MP_OnlineStore.ViewModels
+namespace MP_OnlineStore.WEB.ViewModels
 {
     public class ErrorViewModel
     {

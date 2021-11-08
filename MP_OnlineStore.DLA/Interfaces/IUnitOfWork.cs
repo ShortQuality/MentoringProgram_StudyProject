@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using MP_OnlineStore.DAL.Entities;
-using MP_OnlineStore.DAL.Interfaces.Repositories;
+﻿using System.Threading.Tasks;
+using MP_OnlineStore.Core.Entities;
+using MP_OnlineStore.Core.Interfaces.Repositories;
 
-namespace MP_OnlineStore.DAL.Interfaces
+namespace MP_OnlineStore.Core.Interfaces
 {
     public interface IUnitOfWork
     {
