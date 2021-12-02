@@ -1,0 +1,72 @@
+﻿@model MP_OnlineStore.WEB.ViewModels.ProductsListViewModel
+
+@{
+    ViewData["Title"] = "Edit Products";
+}
+
+<header>
+    <h1>
+        Edit Products
+    </h1>
+</header>
+
+<div class="table-wrapper">
+    <form asp-action="Edit">
+        <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Quantity Per Unit</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    <div class="col-2 col-12-xsmall">
+                        @item.ProductId 
+                    </div>
+                </td>
+                <td>
+                    <div class="col-2 col-12-xsmall form-group">
+                        <input type="text" id="product-name" data-key="@item.ProductId" value="@item.ProductName">
+                    </div>
+                </td>
+                <td>
+                    <div class="col-2 col-12-xsmall form-group" id="category-name" data-key="@item.ProductId">
+                        <select>
+                            <option data-key="@item.Category.CategoryId">@item.Category.CategoryName</option>
+                            @foreach (var category in Model.Categories)
+                            {
+                                if (category.CategoryName != item.Category.CategoryName)
+                                {
+                                    <option data-key="@category.CategoryId">@category.CategoryName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-2 col-12-xsmall form-group">
+                        <input type="text" id="quantity-per-unit" data-key="@item.ProductId" value="@item.QuantityPerUnit">
+                    </div>
+                </td>
+                <td>
+                    <div class="col-2 col-12-xsmall form-group">
+                        <input type="text" id="unit-price" data-key="@item.ProductId" value="@item.UnitPrice">
+                    </div>
+                </td>
+
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+        </table>
+    </form>
+</div>

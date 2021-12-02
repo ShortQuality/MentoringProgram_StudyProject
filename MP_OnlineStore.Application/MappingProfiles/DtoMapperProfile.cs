@@ -9,7 +9,11 @@ namespace MP_OnlineStore.Application.MappingProfiles
     {
         public DtoMapperProfile()
         {
-            CreateMap<Product, ProductDto>();
+            CreateMap<Product, ProductDto>()
+                .ReverseMap();
+
+            //CreateMap<IEnumerable<Product>, IEnumerable<ProductDto>>()
+            //    .ReverseMap();
 
             CreateMap<Category, CategoryDto>()
                 .ForMember(dest => 
@@ -17,6 +21,8 @@ namespace MP_OnlineStore.Application.MappingProfiles
                 opt => opt.MapFrom(src => src.Products))
                 .ReverseMap();
 
+            //CreateMap<IEnumerable<Category>, IEnumerable<CategoryDto>>()
+            //    .ReverseMap();
         }
     }
 }

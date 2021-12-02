@@ -8,13 +8,12 @@ namespace MP_OnlineStore.Core.Interfaces.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        void AddAsync(TEntity entity);
-        ValueTask<TEntity> FirstOrDefaultAsync(int id);
-        IEnumerable<TEntity> Get(
+        Task AddAsync(TEntity entity);
+        Task<TEntity> FirstOrDefaultAsync(int id);
+        Task<IEnumerable<TEntity>> GetAsync(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "");
-        IQueryable<TEntity> GetAll();
         void Update(TEntity entity);
         void Delete(TEntity entity);
     }

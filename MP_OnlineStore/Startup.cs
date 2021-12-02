@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MP_OnlineStore.Application.MappingProfiles;
+using MP_OnlineStore.Application.Services;
+using MP_OnlineStore.Application.Services.Interfaces;
 using MP_OnlineStore.Core.Interfaces;
 using MP_OnlineStore.Infrastructure;
 using MP_OnlineStore.Infrastructure.Data;
@@ -31,10 +33,12 @@ namespace MP_OnlineStore.WEB
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
             var mapperConfig = new MapperConfiguration(mc => {
                 mc.AddProfile(new DtoMapperProfile());
-                mc.AddProfile( new ViewModelsMapperProfile());
+                mc.AddProfile(new ViewModelsMapperProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

@@ -1,12 +1,12 @@
 ﻿@model MP_OnlineStore.WEB.ViewModels.ProductsListViewModel
 
 @{
-    ViewData["Title"] = Model.Category.CategoryName;
+    ViewData["Title"] = Model.CategoryName;
 }
 
 <header>
     <h1>
-        @Model.Category.CategoryName
+        @Model.CategoryName
     </h1>
 </header>
 
@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-            @if (Model.Products.Count != 0 && Model.MaxProductsOnPage != 0 && Model.Products.Count >= Model.MaxProductsOnPage)
+            @if (Model.Products.Count() != 0 && Model.MaxProductsOnPage != 0 && Model.Products.Count() >= Model.MaxProductsOnPage)
             {
                 @foreach (var item in Model.Products.Take(Model.MaxProductsOnPage))
                 {
@@ -31,7 +31,7 @@
                     </tr>
                 }
             }
-            else if (Model.Products.Count != 0 && (Model.MaxProductsOnPage == 0 || Model.Products.Count <= Model.MaxProductsOnPage))
+            else if (Model.Products.Count() != 0 && (Model.MaxProductsOnPage == 0 || Model.Products.Count() <= Model.MaxProductsOnPage))
             {
                 @foreach (var item in Model.Products)
                 {

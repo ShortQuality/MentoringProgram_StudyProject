@@ -9,7 +9,11 @@ namespace MP_OnlineStore.WEB.MappingProfiles
     {
         public ViewModelsMapperProfile()
         {
-            CreateMap<ProductDto, ProductViewModel>();
+            CreateMap<ProductDto, ProductViewModel>()
+                .ReverseMap();
+
+            //CreateMap<IEnumerable<ProductDto>, IEnumerable<ProductViewModel>>()
+            //    .ReverseMap();
 
             CreateMap<CategoryDto, CategoryViewModel>()
                 .ForMember(dest => 

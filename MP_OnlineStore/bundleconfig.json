@@ -3,6 +3,7 @@
     "outputFileName": "wwwroot/js/scripts.js",
     "inputFiles": [
       "wwwroot/js/jquery.min.js",
+      "wwwroot/js/Custom/products.js",
       "wwwroot/js/main.js",
       "wwwroot/js/browser.min.js",
       "wwwroot/js/breakpoints.min.js",

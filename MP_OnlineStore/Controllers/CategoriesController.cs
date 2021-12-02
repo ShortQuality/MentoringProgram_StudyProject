@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MP_OnlineStore.Core.Interfaces;
 
@@ -14,9 +15,9 @@ namespace MP_OnlineStore.WEB.Controllers
         }
 
         [HttpGet]
-        public IActionResult AllCategories()
+        public async Task<IActionResult> AllCategories()
         {
-            var categories = _unitOfWork.CategoriesRepository.GetAll().AsEnumerable();
+            var categories = await _unitOfWork.CategoriesRepository.GetAsync();
             return View(categories);
         }
     }

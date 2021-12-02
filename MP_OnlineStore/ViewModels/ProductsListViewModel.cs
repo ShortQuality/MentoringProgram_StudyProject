@@ -5,8 +5,9 @@ namespace MP_OnlineStore.WEB.ViewModels
 {
     public class ProductsListViewModel
     {
-        public CategoryViewModel Category { get; set; }
-        public ICollection<ProductViewModel> Products { get; set; }
+        public string CategoryName { get; set; }
+        public IEnumerable<ProductViewModel> Products { get; set; }
+        public IEnumerable<CategoryViewModel> Categories { get; set; }
         public int MaxProductsOnPage { get; set; }
     }
 }

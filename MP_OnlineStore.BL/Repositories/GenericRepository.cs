@@ -18,12 +18,12 @@ namespace MP_OnlineStore.Infrastructure.Repositories
             _entities = entities;
         }
 
-        public virtual void AddAsync(TEntity entity)
+        public virtual async Task AddAsync(TEntity entity)
         {
-            _entities.AddAsync(entity);
+           await _entities.AddAsync(entity);
         }
 
-        public virtual IEnumerable<TEntity> Get(
+        public virtual async Task<IEnumerable<TEntity>> GetAsync(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
@@ -43,22 +43,17 @@ namespace MP_OnlineStore.Infrastructure.Repositories
 
             if (orderBy != null)
             {
-                return orderBy(query).ToList();
+                return await orderBy(query).ToListAsync();
             }
             else
             {
-                return query.ToList();
+                return await query.ToListAsync();
             }
         }
 
-        public virtual ValueTask<TEntity> FirstOrDefaultAsync(int id)
+        public virtual async Task<TEntity> FirstOrDefaultAsync(int id)
         {
-           return _entities.FindAsync(id);
-        }
-
-        public virtual IQueryable<TEntity> GetAll()
-        {
-            return _entities.AsQueryable();
+           return await _entities.FindAsync(id);
         }
 
         public virtual void Update(TEntity entity)
